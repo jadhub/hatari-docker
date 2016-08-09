@@ -1,0 +1,16 @@
+#
+# Hatari Dockerfile
+# see https://hg.tuxfamily.org/mercurialroot/hatari/hatari/raw-file/tip/doc/manual.html#Compiling_and_running
+
+# pull base image
+FROM ubuntu
+
+ENV HATARI_TAG v1.9.0
+
+ADD . /bd_build
+
+RUN chmod +x /bd_build/*
+
+RUN /bd_build/install_libs.sh && \
+	/bd_build/install_hatari.sh && \
+	/bin/bash
