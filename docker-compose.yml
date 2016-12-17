@@ -2,4 +2,4 @@ version: '2'
 services:
     hatari:
         build: ./hatari
-        container_name: hatari_main
+        container_name: hatari-main

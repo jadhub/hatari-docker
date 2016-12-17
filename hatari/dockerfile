@@ -3,14 +3,13 @@
 # see https://hg.tuxfamily.org/mercurialroot/hatari/hatari/raw-file/tip/doc/manual.html#Compiling_and_running
 
 # pull base image
-FROM ubuntu
+FROM ubuntu:14.04
 
 ENV HATARI_TAG v1.9.0
+ENV TERM xterm
 
-ADD . /bd_build
+ADD data /build
 
-RUN chmod +x /bd_build/*
+RUN chmod +x /build/run.sh
 
-RUN /bd_build/install_libs.sh && \
-	/bd_build/install_hatari.sh && \
-	/bin/bash
+RUN /build/run.sh
