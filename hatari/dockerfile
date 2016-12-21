@@ -9,6 +9,4 @@ RUN chmod +x /build/run.sh
 
 RUN /build/run.sh
 
-RUN bash -c 'echo "hatari" >> /.bashrc'
-
 EXPOSE 5900

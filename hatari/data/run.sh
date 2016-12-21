@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # add source for libportaudio-dev to be available
 echo "deb http://us.archive.ubuntu.com/ubuntu precise main universe" | tee -a /etc/apt/sources.list
@@ -30,6 +30,9 @@ hg clone https://hg.tuxfamily.org/mercurialroot/hatari/hatari#$HATARI_TAG
 
 # TOS image is needed in this location for hatari to run
 cp /build/emutos-512k-0.9.6/etos512k.img /usr/local/share/hatari/tos.img
+# Copy additional versions
+cp /build/tos206/tos206de.img /usr/local/share/hatari/ste.img
+cp /build/tos404/tos404.img /usr/local/share/hatari/falcon.img
 
 # create build directory and run cmake
 mkdir -p /hatari/build
@@ -39,6 +42,11 @@ cd /hatari/build
 # make - and make install to do systemwide install
 make
 make install
+
+# copy shortcut scripts
+cp /build/shortcuts/*.sh /usr/local/bin
+cd /usr/local/bin
+chmod +x *.sh
 
 # configure vnc
 mkdir ~/.vnc
