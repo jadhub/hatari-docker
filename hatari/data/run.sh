@@ -13,9 +13,11 @@ apt-get update && apt-get install -y \
 	libreadline6-dev \
 	libx11-dev \
 	libportaudio-dev \
-	mercurial
+	mercurial \
+	x11vnc \
+	xvfb
 
-# Libs which are still missing:
+# todo : libs which are still not installed/correctly installed
 # portaudio :        not found, install it to enable the Falcon microphone input
 # capsimage :        v4 not found, install it to use .IPF, .RAW and .CTR disk images
 
@@ -38,7 +40,6 @@ cd /hatari/build
 make
 make install
 
-# done, hatari can be run
-hatari
-
-#tail -F -n0 /etc/hosts
+# configure vnc
+mkdir ~/.vnc
+x11vnc -storepasswd 1234 ~/.vnc/passwd

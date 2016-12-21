@@ -1,11 +1,6 @@
-#
-# Hatari Dockerfile
-# see https://hg.tuxfamily.org/mercurialroot/hatari/hatari/raw-file/tip/doc/manual.html#Compiling_and_running
-
-# pull base image
 FROM ubuntu:14.04
 
-ENV HATARI_TAG v1.9.0
+ENV HATARI_TAG v2.0.0
 ENV TERM xterm
 
 ADD data /build
@@ -13,3 +8,7 @@ ADD data /build
 RUN chmod +x /build/run.sh
 
 RUN /build/run.sh
+
+RUN bash -c 'echo "hatari" >> /.bashrc'
+
+EXPOSE 5900

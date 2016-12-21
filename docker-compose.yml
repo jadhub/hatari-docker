@@ -2,4 +2,7 @@ version: '2'
 services:
     hatari:
         build: ./hatari
+        image: hatari/main
         container_name: hatari-main
+        ports:
+            - "5900:5900"
